@@ -4,6 +4,10 @@ version = "0.1.0"
 description = "Limit time and memory usage from a function"
 authors = ["Quentin Fortier <qpfortier@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/fortierq/flimit"
+repository = "https://github.com/fortierq/flimit"
+keywords = ["limit", "time", "memory", "function"]
 
 [tool.poetry.dependencies]
 python = "^3.7"

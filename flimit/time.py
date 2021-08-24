@@ -1,8 +1,10 @@
 import signal
 from contextlib import contextmanager
 
+
 class TimeLimitError(Exception): 
     pass
+
 
 @contextmanager
 def limit_time(seconds : int):

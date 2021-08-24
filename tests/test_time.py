@@ -1,27 +1,22 @@
-from flimit.time import time_limit, TimeLimitException
+from flimit.time import limit_time, TimeLimitError
 import time
 
-def test_time_limit():
-    @time_limit(1)
+def test_limit_time():
+    @limit_time(1)
     def f():
         time.sleep(2)
     
     try:
         f()
-    except TimeLimitException:
+    except TimeLimitError:
         return
     else:
         assert False
 
 def test_time_nolimit():
-    @time_limit(2)
+    @limit_time(2)
     def f():
         time.sleep(1)
     
-    try:
-        f()
-        time.sleep(2)
-    except TimeLimitException:
-        assert False
-    else:
-        assert True
+    f()
+    time.sleep(2)

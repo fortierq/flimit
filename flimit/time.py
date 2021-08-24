@@ -1,13 +1,22 @@
 import signal
 from contextlib import contextmanager
 
-class TimeLimitException(Exception): 
+class TimeLimitError(Exception): 
     pass
 
 @contextmanager
-def time_limit(seconds):
+def limit_time(seconds : int):
+    """Decorator to limit time usage of a function. Raise TimeLimitError when the limit is exceeded.
+
+    Args:
+        seconds (int): Maximum computation time of the function, in seconds.
+    
+    Raises:
+        TimeLimitError: When the function reaches the limit.
+    """
+
     def signal_handler(signum, frame):
-        raise TimeLimitException
+        raise TimeLimitError
     signal.signal(signal.SIGALRM, signal_handler)
     signal.alarm(seconds)
     try:

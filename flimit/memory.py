@@ -21,7 +21,7 @@ def limit_memory(octets: int):
     try:
         yield
     finally:
-            pass
+        pass
 
 
 def get_memory():
